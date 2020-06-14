@@ -12,7 +12,6 @@ export class ServerComponent {
   inputStatus: boolean = false;
 
   onMatchingInput(event: Event) {
-    this.username = (<HTMLInputElement>event.target).value;
     this.inputStatus = this.username !== '';
   }
 
