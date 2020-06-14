@@ -11,6 +11,7 @@
   class="form-control"
   [(ngModel)]="serverName"
 />
+<br />
 <p>{{ serverName }}</p>
 
 <button
@@ -33,3 +34,5 @@
 <ng-template #noServer>
   <p>No Server was created</p>
 </ng-template>
+
+<app-server *ngFor="let server of servers"></app-server>
