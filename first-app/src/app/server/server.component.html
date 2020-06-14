@@ -1,3 +1,4 @@
+<!--
 <label for="user">Username </label> <br />
 <input
   id="user"
@@ -20,3 +21,14 @@
 <div class="alert alert-secondary" role="alert">
   {{ username }}
 </div>
+-->
+
+<p [ngStyle]="{ fontSize: fontSize }">
+  Server with ID {{ serverOneId }} is
+  <span [ngClass]="getColor1()">{{ getServerStatus()[0] }}</span>
+</p>
+
+<p>
+  Server with ID {{ serverTwoId }} is
+  <span [ngClass]="getColor2()">{{ getServerStatus()[1] }}</span>
+</p>
