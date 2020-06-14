@@ -1,1 +1,22 @@
-<p>Server with ID {{ serverId }} is {{ getServerStatus() }}</p>
+<label for="user">Username </label> <br />
+<input
+  id="user"
+  type="text"
+  class="form-control"
+  [(ngModel)]="username"
+  (input)="onMatchingInput($event)"
+/>
+<br />
+
+<button
+  class="btn btn-danger"
+  (click)="onResetInput()"
+  [disabled]="!inputStatus"
+>
+  Reset
+</button>
+
+<br /><br />
+<div class="alert alert-secondary" role="alert">
+  {{ username }}
+</div>

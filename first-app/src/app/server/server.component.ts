@@ -8,7 +8,16 @@ export class ServerComponent {
   serverId: number = 10;
   serverStatus: string = 'offline';
 
-  getServerStatus() {
-    return this.serverStatus;
+  username: string = '';
+  inputStatus: boolean = false;
+
+  onMatchingInput(event: Event) {
+    this.username = (<HTMLInputElement>event.target).value;
+    this.inputStatus = this.username !== '';
+  }
+
+  onResetInput() {
+    this.username = '';
+    this.inputStatus = false;
   }
 }
