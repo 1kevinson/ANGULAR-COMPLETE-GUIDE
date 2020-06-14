@@ -36,3 +36,33 @@
 </ng-template>
 
 <app-server *ngFor="let server of servers"></app-server>
+
+<hr />
+<h2 class="alert alert-secondary">Assignements directives</h2>
+<button type="button" class="btn btn-light" (click)="onDisplayToggle()">
+  Display Details
+</button>
+<br />
+<br />
+<div class="row">
+  <div class="card col-sm-6">
+    <div class="card-body" *ngIf="displayDetails">
+      Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+      fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+      sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
+      amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+      incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+    </div>
+  </div>
+  <div class="card col-sm-6">
+    <div class="card-body">
+      <p
+        [ngClass]="log >= 5 ? 'white-text' : ''"
+        [ngStyle]="{ backgroundColor: log >= 5 ? 'dodgerblue' : 'transparent' }"
+        *ngFor="let log of arrayOfLogs"
+      >
+        {{ log }}
+      </p>
+    </div>
+  </div>
+</div>

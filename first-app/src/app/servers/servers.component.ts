@@ -15,6 +15,10 @@ export class ServersComponent implements OnInit {
   serverName = 'BlankServer';
   serverCreated = false;
 
+  displayDetails: boolean = true;
+  arrayOfLogs: number[] = [];
+  data: number = 0;
+
   servers = ['TestServer', 'TestServer 2'];
 
   constructor() {
@@ -36,5 +40,28 @@ export class ServersComponent implements OnInit {
   onUpdateServerName(event: Event) {
     //Add the type of the DOM element nested by event
     this.serverName = (<HTMLInputElement>event.target).value;
+  }
+
+  onDisplayToggle() {
+    this.displayDetails = !this.displayDetails;
+
+    //GET TIME OF LOGS
+    /*
+    const today = new Date();
+    const date =
+      today.getDate() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getFullYear() +
+      ' | ' +
+      today.getHours() +
+      ':' +
+      today.getMinutes() +
+      ':' +
+      today.getSeconds();
+*/
+    this.data++;
+    this.arrayOfLogs.push(this.data);
   }
 }
