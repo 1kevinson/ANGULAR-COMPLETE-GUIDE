@@ -57,9 +57,9 @@
   <div class="card col-sm-6">
     <div class="card-body">
       <p
-        [ngClass]="log >= 5 ? 'white-text' : ''"
-        [ngStyle]="{ backgroundColor: log >= 5 ? 'dodgerblue' : 'transparent' }"
-        *ngFor="let log of arrayOfLogs"
+        [ngClass]="i >= 5 ? 'white-text' : ''"
+        [ngStyle]="{ backgroundColor: i >= 5 ? 'dodgerblue' : 'transparent' }"
+        *ngFor="let log of arrayOfLogs; let i = index"
       >
         {{ log }}
       </p>

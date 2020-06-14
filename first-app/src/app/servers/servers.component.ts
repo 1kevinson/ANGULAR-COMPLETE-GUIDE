@@ -16,7 +16,7 @@ export class ServersComponent implements OnInit {
   serverCreated = false;
 
   displayDetails: boolean = true;
-  arrayOfLogs: number[] = [];
+  arrayOfLogs: string[] = [];
   data: number = 0;
 
   servers = ['TestServer', 'TestServer 2'];
@@ -46,7 +46,7 @@ export class ServersComponent implements OnInit {
     this.displayDetails = !this.displayDetails;
 
     //GET TIME OF LOGS
-    /*
+
     const today = new Date();
     const date =
       today.getDate() +
@@ -60,8 +60,7 @@ export class ServersComponent implements OnInit {
       today.getMinutes() +
       ':' +
       today.getSeconds();
-*/
-    this.data++;
-    this.arrayOfLogs.push(this.data);
+
+    this.arrayOfLogs.push(date);
   }
 }
