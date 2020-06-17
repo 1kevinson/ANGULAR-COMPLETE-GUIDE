@@ -12,13 +12,14 @@ export class RecipeListComponent implements OnInit {
     new Recipe(
       'A test recipe',
       'Simple test',
-      'https://www.foodiecrush.com/wp-content/uploads/2019/07/Pomodoro-Sauce-foodiecrush.com-015.jpg'
+      'https://encrypted-tbn0.gstatic.com/' +
+        'images?q=tbn%3AANd9GcRkMlCFxZBelYVN6X6BOs3F_wx8CxgEJN_MtaiH8QKmXHSchoSI&usqp=CAU'
     ),
     new Recipe(
       'A test recipe',
       'Simple test',
-      'https://images.kglobalservices.com/www.ricekrispies.com/en_us/recipe/kicrecipe-1605/' +
-        'recipe-gallery_img-5035195_recip_img-7547320_holiday_kabobs_-_rice_krispies-011.jpg'
+      'https://encrypted-tbn0.gstatic.com/' +
+        'images?q=tbn%3AANd9GcRkMlCFxZBelYVN6X6BOs3F_wx8CxgEJN_MtaiH8QKmXHSchoSI&usqp=CAU'
     ),
   ];
 
