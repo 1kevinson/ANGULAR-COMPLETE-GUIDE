@@ -1,8 +1,13 @@
 <div class="container">
-  <app-cockpit></app-cockpit>
+  <!--  Retrieve cockpit event -->
+  <app-cockpit
+    (serverCreated)="onServerAdded($event)"
+    (blueprintCreated)="onBlueprintAdded($event)"
+  ></app-cockpit>
   <hr />
   <div class="row">
     <div class="col-xs-12">
+      <!--      Bin server element from outside -->
       <app-server-element
         *ngFor="let serverElement of serverElements"
         [srvElement]="serverElement"
