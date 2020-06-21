@@ -34,7 +34,7 @@ export class CockpitComponent implements OnInit {
 
   // Send the cockpit event outside the component
   onAddServer(name: HTMLInputElement) {
-    console.log(this.serverContentInput);
+    //console.log(this.serverContentInput);
     this.serverCreated.emit({
       serverName: name.value,
       serverContent: this.serverContentInput.nativeElement.value,
