@@ -11,7 +11,7 @@ import {
   selector: "app-server-element",
   templateUrl: "./server-element.component.html",
   styleUrls: ["./server-element.component.css"],
-  encapsulation: ViewEncapsulation.Emulated, //None, Native (affect all the DOM)
+  encapsulation: ViewEncapsulation.Emulated, //None, Native (affect CSS in all the DOM)
 })
 export class ServerElementComponent implements OnInit, OnChanges {
   // @Input is use to make a property bindable from outside
