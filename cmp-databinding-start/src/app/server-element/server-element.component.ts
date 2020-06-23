@@ -4,12 +4,15 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  ContentChild,
   DoCheck,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
   SimpleChanges,
+  ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
 
@@ -33,6 +36,11 @@ export class ServerElementComponent
   @Input("srvElement") element: { type: string; name: string; content: string };
   @Input() name: string;
 
+  @ViewChild("heading", { static: true }) header: ElementRef;
+
+  // allow to get access to content which is stored in another component but passed via ng-content
+  @ContentChild("contentParagraph", { static: true }) paragraph: ElementRef;
+
   constructor() {
     console.log("constructor log");
   }
@@ -42,8 +50,13 @@ export class ServerElementComponent
     console.log("ngOnChanges called");
   }
 
+  // Content Init
   ngOnInit(): void {
     console.log("ngOnInit called");
+    console.log("Text Content" + this.header.nativeElement.textContent);
+    console.log(
+      "paragraph content " + this.paragraph.nativeElement.textContent
+    );
   }
 
   ngDoCheck() {
@@ -52,6 +65,9 @@ export class ServerElementComponent
 
   ngAfterContentInit(): void {
     console.log("ngAfterContentInit called");
+    console.log(
+      "paragraph content " + this.paragraph.nativeElement.textContent
+    );
   }
 
   ngAfterContentChecked(): void {
@@ -62,8 +78,11 @@ export class ServerElementComponent
     console.log("afterViewChecked called");
   }
 
+  // Allow to use value on the DOM , trigger before ngOnInit
+  // View init
   ngAfterViewInit(): void {
     console.log("afterViewInit called");
+    console.log("Text Content" + this.header.nativeElement.textContent);
   }
 
   ngOnDestroy(): void {
