@@ -7,10 +7,18 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">
+        change first button
+      </button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">
+        destroy first button
+      </button>
+
       <!-- Bind  element from outside of server-element component -->
       <app-server-element
         *ngFor="let serverElement of serverElements"
         [srvElement]="serverElement"
+        [name]="serverElement.name"
       >
         <p>
           <strong *ngIf="serverElement.type === 'server'" style="color: red;">{{
