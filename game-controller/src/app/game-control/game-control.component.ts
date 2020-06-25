@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-control',
@@ -10,8 +10,15 @@ export class GameControlComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  counter: number = 0;
   intervalID: any;
+  counter: number = 0;
+  value: string;
+
+  // Send the event outside the component
+  @Output() gameStarted = new EventEmitter<{
+    valueOfMessage: string;
+    counterNumber: number;
+  }>();
 
   startTheGame() {
     this.countDown();
@@ -25,11 +32,11 @@ export class GameControlComponent implements OnInit {
     this.clearCountDown();
     this.intervalID = setInterval(() => {
       this.counter += 1;
-      if (this.counter % 2) {
-        console.log('Even');
-      } else {
-        console.log('Odd');
-      }
+      //Emit the event outside of the component
+      this.gameStarted.emit({
+        valueOfMessage: !(this.counter % 2) ? 'Even' : 'Odd',
+        counterNumber: this.counter,
+      });
     }, 1000);
   }
 

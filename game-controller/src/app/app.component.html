@@ -15,7 +15,21 @@
       </div>
     </div>
 
-    <app-game-control></app-game-control>
+    <!-- Retrieve event from game-control-component -->
+    <app-game-control (gameStarted)="onGameStarted($event)"></app-game-control>
+
+    <hr />
+    <div *ngFor="let gameElement of gameElements">
+      <div class="row">
+        <div class="col-sm-8" *ngIf="gameElement.message == 'Even'">
+          <app-even [evenElement]="gameElement"></app-even>
+        </div>
+        <div class="col-sm-8" *ngIf="gameElement.message == 'Odd'">
+          <app-odd [oddElement]="gameElement"></app-odd>
+        </div>
+      </div>
+      <br />
+    </div>
   </div>
 
   <div class="col-sm-2"></div>

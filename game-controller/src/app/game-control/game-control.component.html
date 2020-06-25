@@ -1,2 +1,9 @@
-<button type="button" class="btn btn-outline-primary mr-2">Start</button>
-<button type="button" class="btn btn-danger">End</button>
+<!-- startTheGame() method will dispatch the events outside the component -->
+<button
+  type="button"
+  class="btn btn-outline-primary mr-2"
+  (click)="startTheGame()"
+>
+  Start
+</button>
+<button type="button" class="btn btn-danger" (click)="endTheGame()">End</button>
