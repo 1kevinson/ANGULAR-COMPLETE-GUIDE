@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccountService } from './account.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { AccountService } from './account.service';
   styleUrls: ['./app.component.css'],
   providers: [AccountService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   accounts: { name: string; status: string }[] = [];
 
   constructor(private accountService: AccountService) {}
