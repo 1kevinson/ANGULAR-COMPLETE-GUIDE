@@ -12,4 +12,8 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {}
 
   @Input() recipe: Recipe;
+
+  log(val) {
+    console.table(val);
+  }
 }
