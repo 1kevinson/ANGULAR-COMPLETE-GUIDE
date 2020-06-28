@@ -16,11 +16,9 @@ export class ShoppingEditComponent implements OnInit {
   @ViewChild('amountInput') IngredientAmountInput: ElementRef;
 
   addIngredient() {
-    const newIng = this.shoppingListService.onIngredientAdded(
+    this.shoppingListService.onIngredientAdded(
       this.IngredientNameInput.nativeElement.value,
       this.IngredientAmountInput.nativeElement.value
     );
-    // Emit the event in the component , not in the service
-    this.shoppingListService.IngredientCreated.emit(newIng);
   }
 }
