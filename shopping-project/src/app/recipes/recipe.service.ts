@@ -44,6 +44,6 @@ export class RecipeService {
   }
 
   addIngredientToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.onArrayIngredientsAdded(ingredients);
+    this.shoppingListService.onIngredientsAdded(ingredients);
   }
 }

@@ -21,7 +21,7 @@ export class ShoppingListService {
     this.IngredientCreated.emit(this.ingredients.slice());
   }
 
-  onArrayIngredientsAdded(ingredientsAdded: Ingredient[]) {
+  onIngredientsAdded(ingredientsAdded: Ingredient[]) {
     this.ingredients.push(...ingredientsAdded);
     this.IngredientCreated.emit(this.ingredients.slice());
   }
