@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-user",
@@ -16,5 +16,16 @@ export class UserComponent implements OnInit {
       id: this.route.snapshot.params["id"],
       name: this.route.snapshot.params["name"],
     };
+
+    /**
+     * @Observable  is an easy way to subscribe to some event which might happen in the future,
+     * to then execute some code when it happens without having to wait for it now. .params is a
+     *
+     * .param ---> is an Observable
+     * */
+    this.route.params.subscribe((params: Params) => {
+      this.user.id = params["id"];
+      this.user.name = params["name"];
+    });
   }
 }
