@@ -50,8 +50,14 @@ const appRoutes: Routes = [
   { path: "**", redirectTo: "/not-found" },
 ];
 
+/**
+ *
+ *@useHash inform the web server to only care about the part of url before this hashtag
+ * that's will always return the index.html instead of 404 error page
+ *
+ * */
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
