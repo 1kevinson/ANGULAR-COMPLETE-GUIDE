@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
      * @Observable  is an easy way to subscribe to some event which might happen in the future,
      * to then execute some code when it happens without having to wait for it now. .params is a
      *
-     * .param ---> is an Observable
+     * .param ---> is an Route Observable
      * */
     this.route.params.subscribe((params: Params) => {
       this.user.id = params["id"];
