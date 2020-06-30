@@ -1,1 +1,5 @@
 <h3>This page was not found</h3>
+
+<h1 *ngIf="!isActivated">
+  Not allowed! <span [ngStyle]="{ color: 'red' }">AuthGuard activated</span>
+</h1>

@@ -26,7 +26,7 @@ export class AuthGard implements CanActivate, CanActivateChild {
       if (authenticated) {
         return true;
       } else {
-        this.router.navigate(["/"]);
+        this.router.navigate(["not-found"]);
       }
     });
   }
