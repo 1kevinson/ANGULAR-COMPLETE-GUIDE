@@ -11,11 +11,17 @@ import { EditServerComponent } from "./servers/edit-server/edit-server.component
 import { ServerComponent } from "./servers/server/server.component";
 import { ServersService } from "./servers/servers.service";
 import { RouterModule, Routes } from "@angular/router";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 /**
  * @Routes
  * Good practice to declare route into the app.module.ts
  */
+
+/*
+ * { path: "**", redirectTo: "/not-found" }, Will always be the latest route of the array
+ *
+ * */
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -33,6 +39,8 @@ const appRoutes: Routes = [
       { path: ":id/edit", component: EditServerComponent },
     ],
   },
+  { path: "not-found", component: PageNotFoundComponent },
+  { path: "**", redirectTo: "/not-found" },
 ];
 
 @NgModule({
@@ -44,6 +52,7 @@ const appRoutes: Routes = [
     UserComponent,
     EditServerComponent,
     ServerComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],
