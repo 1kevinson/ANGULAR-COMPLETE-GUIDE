@@ -7,11 +7,7 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./page-not-found.component.css"],
 })
 export class PageNotFoundComponent implements OnInit {
-  isActivated: boolean = false;
+  constructor() {}
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit() {
-    this.isActivated = this.authService.loggedIn;
-  }
+  ngOnInit() {}
 }
