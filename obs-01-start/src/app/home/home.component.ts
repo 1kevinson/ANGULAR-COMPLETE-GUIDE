@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }, 1000);
     });
 
-    //Operator use with pipe
+    //Operator use with pipe ( filter, map functions before subscribe to the datas )
     this.firstObsSubscription = customIntervalObservable
       .pipe(
         filter((data) => {
