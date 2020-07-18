@@ -1,13 +1,11 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Injectable } from '@angular/core';
 
 // Injectable is a decorator use for dependency injection
 @Injectable()
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
-
   //the type is array of recipes
   private recipes: Recipe[] = [
     new Recipe(
