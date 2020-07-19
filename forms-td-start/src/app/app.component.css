@@ -2,6 +2,7 @@
   margin-top: 30px;
 }
 
-input.ng-invalid {
+input.ng-invalid,
+select.ng-invalid {
   border: solid 1px red;
 }

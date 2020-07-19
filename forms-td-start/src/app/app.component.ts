@@ -9,6 +9,7 @@ import { NgForm } from "@angular/forms";
 export class AppComponent {
   //Useful to retrieve data even if we don't submit the form
   @ViewChild("f") signupForm: NgForm;
+  defaultQuestion: string = "pet";
 
   suggestUserName() {
     const suggestedName = "Superuser";
@@ -17,6 +18,7 @@ export class AppComponent {
   /*onSubmit(form: NgForm) {
     console.log(form);
   }*/
+
   onSubmit() {
     console.log(this.signupForm);
   }
