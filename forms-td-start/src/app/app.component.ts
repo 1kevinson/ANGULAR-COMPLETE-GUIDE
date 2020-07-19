@@ -7,7 +7,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  //Useful to retrieve data even if we don't submit the form
+  // Useful to retrieve data that are in the form (type NgForm)
   @ViewChild("f") signupForm: NgForm;
   defaultQuestion: string = "pet";
   answer = "";
@@ -15,6 +15,22 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = "Superuser";
+    /* this.signupForm.setValue({
+      userData: {
+        username: suggestedName,
+        email: "",
+      },
+      secret: "pet",
+      questionAnswer: "",
+      gender: "male",
+    });*/
+
+    // Better approach to modify only one value of the form
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName,
+      },
+    });
   }
 
   /*onSubmit(form: NgForm) {

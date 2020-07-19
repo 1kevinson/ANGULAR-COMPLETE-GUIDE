@@ -2,6 +2,10 @@
   margin-top: 30px;
 }
 
-input.ng-invalid {
+input.ng-invalid.ng-touched {
   border: solid 1px red;
+}
+
+#email.ng-valid {
+  background: rgba(207, 207, 67, 0.77);
 }
