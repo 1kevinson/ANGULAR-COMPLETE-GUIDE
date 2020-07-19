@@ -1,4 +1,4 @@
-import { Component, ElementRef } from "@angular/core";
+import { Component, ElementRef, Input, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 
 @Component({
@@ -7,11 +7,17 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
+  //Useful to retrieve data even if we don't submit the form
+  @ViewChild("f") signupForm: NgForm;
+
   suggestUserName() {
     const suggestedName = "Superuser";
   }
 
-  onSubmit(form: NgForm) {
+  /*onSubmit(form: NgForm) {
     console.log(form);
+  }*/
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
