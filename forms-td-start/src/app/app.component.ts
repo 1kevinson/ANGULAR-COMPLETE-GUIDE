@@ -10,6 +10,7 @@ export class AppComponent {
   //Useful to retrieve data even if we don't submit the form
   @ViewChild("f") signupForm: NgForm;
   defaultQuestion: string = "pet";
+  answer = "";
 
   suggestUserName() {
     const suggestedName = "Superuser";
