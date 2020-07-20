@@ -1,0 +1,7 @@
+.alert-block {
+  margin-top: 1rem;
+}
+
+input.ng-valid {
+  background: rgba(141, 243, 208, 0.68);
+}

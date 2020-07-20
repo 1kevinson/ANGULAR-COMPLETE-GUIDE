@@ -1,0 +1,80 @@
+<form (ngSubmit)="onSubmit()" #f_assign="ngForm">
+  <!--  GROUP MODEL USER -->
+  <div ngModelGroup="user-assign-data">
+    <div class="form-group">
+      <label for="email">Mail</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        ngModel
+        name="email"
+        required
+        email
+        #email="ngModel"
+      />
+      <div
+        class="alert alert-warning alert-block"
+        *ngIf="!email.valid && email.touched"
+        role="alert"
+      >
+        <span>Please enter a valid email!</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        ngModel
+        name="password"
+        required
+        #password="ngModel"
+      />
+      <div
+        class="alert alert-warning alert-block"
+        *ngIf="!password.valid && password.touched"
+        role="alert"
+      >
+        <span>Please enter a password</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subscription">Subscriptions</label>
+    <select
+      id="subscription"
+      class="form-control"
+      [ngModel]="defaultSubscription"
+      name="subscription"
+    >
+      <option value="Basic">Your a rookie coder ?</option>
+      <option value="Advanced">Your confirmed developer?</option>
+      <option value="Pro">Your ninja developer ?</option>
+    </select>
+  </div>
+  <div
+    class="alert alert-danger alert-block"
+    *ngIf="!f_assign.valid && f_assign.touched"
+    role="alert"
+  >
+    <span>Verify the global form because it's invalid</span>
+  </div>
+  <hr />
+  <button class="btn btn-primary" type="submit" [disabled]="!f_assign.valid">
+    Submit assignment
+  </button>
+</form>
+
+<hr />
+<div class="jumbotron" *ngIf="submitted">
+  <h2>Assignement Datas</h2>
+  <p>Mail : {{ user.email }}</p>
+  <p>Password : {{ user.password }}</p>
+  <p>
+    Subscription :
+    <span class="badge badge-pill badge-success">{{ user.subscription }}</span>
+  </p>
+</div>

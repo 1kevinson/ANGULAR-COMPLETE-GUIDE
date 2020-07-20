@@ -12,8 +12,8 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.0.0",
-    "@angular/compiler": "^9.0.0",
     "@angular/common": "^9.0.0",
+    "@angular/compiler": "^9.0.0",
     "@angular/core": "^9.0.0",
     "@angular/forms": "^9.0.0",
     "@angular/platform-browser": "^9.0.0",
@@ -21,10 +21,11 @@
     "@angular/router": "^9.0.0",
     "bootstrap": "3.3.7",
     "core-js": "^3.1.2",
+    "jquery": "^3.5.1",
     "rxjs": "6.3.3",
     "rxjs-compat": "^6.0.0",
-    "zone.js": "~0.10.2",
-    "tslib": "^1.9.0"
+    "tslib": "^1.9.0",
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^9.0.0",
