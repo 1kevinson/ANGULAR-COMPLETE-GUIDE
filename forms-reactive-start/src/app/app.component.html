@@ -1,26 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <form>
+      <!-- Synchronize the form with one created in the typescript -->
+      <form [formGroup]="signupForm">
         <div class="form-group">
           <label for="username">Username</label>
+          <!-- Connect this input with the control username in typescript-->
           <input
             type="text"
             id="username"
-            class="form-control">
+            class="form-control"
+            formControlName="username"
+          />
         </div>
         <div class="form-group">
           <label for="email">email</label>
+          <!-- Connect this input with the control email in typescript-->
           <input
             type="text"
             id="email"
-            class="form-control">
+            class="form-control"
+            formControlName="email"
+          />
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
-            <input
-              type="radio"
-              [value]="gender">{{ gender }}
+            <!-- Connect this input with the control gender in typescript-->
+            <input type="radio" formControlName="gender" [value]="gender" />{{
+              gender
+            }}
           </label>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
