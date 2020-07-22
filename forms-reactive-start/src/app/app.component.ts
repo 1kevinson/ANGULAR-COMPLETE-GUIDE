@@ -29,6 +29,24 @@ export class AppComponent implements OnInit {
       hobbies: new FormArray([]),
     });
 
+    // Setting default values to the form
+    this.signupForm.setValue({
+      userData: {
+        username: "Kevin",
+        email: "kkk@de.de",
+      },
+      gender: "male",
+      hobbies: [],
+    });
+
+    //Update a part of the form
+    this.signupForm.patchValue({
+      userData: {
+        username: "Bartholomeo",
+      },
+    });
+
+    // Getting the update status because statusChanges is an obbservabble
     this.signupForm.statusChanges.subscribe((status) => {
       console.log(status);
     });
