@@ -10,23 +10,38 @@
             class="form-control"
             name="name"
             ngModel
+            #name="ngModel"
+            required
           />
+          <span class="help-block" *ngIf="!name.valid && name.touched">
+            Please enter a valid amount</span
+          >
         </div>
-        <div class="col-sm-2 form-group">
+        <div class="col-sm-3 form-group">
           <label for="amount">Amount</label>
+          <!-- use regular expression for validation -> pattern -->
           <input
             type="number"
             id="amount"
             class="form-control"
             name="amount"
             ngModel
+            #amount="ngModel"
+            pattern="^[1-9]+[0-9]*$"
+            required
           />
+          <span class="help-block" *ngIf="!amount.valid && amount.touched">
+            Please enter a amount greather than 0</span
+          >
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit">Add</button> &nbsp;
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+            Add
+          </button>
+          &nbsp;
           <button class="btn btn-danger" type="button">Delete</button> &nbsp;
           <button class="btn btn-default" type="button">Clear</button>
         </div>
