@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
   // Add observale Subject
   IngredientCreated = new Subject<Ingredient[]>();
+  startEditing = new Subject<number>();
 
   // Define array of ingredients
   private ingredients: Ingredient[] = [
