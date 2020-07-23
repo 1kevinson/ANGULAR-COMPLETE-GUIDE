@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -11,6 +12,8 @@ export class AppComponent implements OnInit {
   genders = ["male", "female"];
   signupForm: FormGroup;
   forbiddenUsernames = ["Chris", "Anna"];
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -83,5 +86,9 @@ export class AppComponent implements OnInit {
         }
       }, 1500);
     });
+  }
+
+  goToAssignement() {
+    this.router.navigate(["reactive-assignment"], { relativeTo: this.route });
   }
 }

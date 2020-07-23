@@ -19,10 +19,17 @@
                 signupForm.get('userData.username').touched
               "
               class="help-block"
-              ><span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is Invalid !</span>
-              <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required !</span>
-              </span
-            >
+              ><span
+                *ngIf="
+                  signupForm.get('userData.username').errors['nameIsForbidden']
+                "
+                >This name is Invalid !</span
+              >
+              <span
+                *ngIf="signupForm.get('userData.username').errors['required']"
+                >This field is required !</span
+              >
+            </span>
           </div>
           <div class="form-group">
             <label for="email">email</label>
@@ -60,14 +67,25 @@
             class="form-group"
             *ngFor="let hobbyControl of controls; let i = index"
           >
+            <br />
             <input type="text" class="form-control" [formControlName]="i" />
           </div>
         </div>
         <span *ngIf="!signupForm.valid && signupForm.touched" class="help-block"
           >Please enter a valid datas !</span
         >
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <br />
+        <button class="btn btn-primary" type="submit">Submit</button> &nbsp;
+        <button
+          class="btn btn-warning"
+          (click)="goToAssignement()"
+          type="button"
+        >
+          Assignement
+        </button>
       </form>
+      <br />
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
