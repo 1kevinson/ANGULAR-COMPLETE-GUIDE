@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // Synchronize the form
     this.signupForm = new FormGroup({
       userData: new FormGroup({
         username: new FormControl(null, [

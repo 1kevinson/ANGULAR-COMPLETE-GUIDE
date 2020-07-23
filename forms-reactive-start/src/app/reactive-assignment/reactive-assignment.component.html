@@ -17,17 +17,15 @@
         />
         <span
           *ngIf="
-            !assignForm.get('userData.username').valid &&
-            assignForm.get('userData.username').touched
+            !assignForm.get('userData.name').valid &&
+            assignForm.get('userData.name').touched
           "
           class="help-block"
           ><span
-            *ngIf="
-              assignForm.get('userData.username').errors['nameIsForbidden']
-            "
+            *ngIf="assignForm.get('userData.name').errors['nameIsForbidden']"
             >This name is Invalid !</span
           >
-          <span *ngIf="assignForm.get('userData.username').errors['required']"
+          <span *ngIf="assignForm.get('userData.name').errors['required']"
             >This field is required !</span
           >
         </span>
@@ -50,15 +48,18 @@
           >Please enter a valid email</span
         >
       </div>
-      <div class="form-group">
-        <label for="status">Secret Questions</label>
-        <select id="status" class="form-control" name="status">
-          <option value="stable">Stable</option>
-          <option value="critical">Critical</option>
-          <option value="finish">Finished</option>
-        </select>
-      </div>
     </div>
+    <div class="form-group">
+      <label for="status">Secret Questions</label>
+      <select id="status" class="form-control" formControlName="status">
+        <option *ngFor="let status of allStatus" value="{{ status }}">{{
+          status | titlecase
+        }}</option>
+      </select>
+    </div>
+    <span *ngIf="!assignForm.valid && assignForm.touched" class="help-block"
+      >Please assign a valid form</span
+    >
 
     <br />
     <button class="btn btn-primary" type="submit">Submit</button>
