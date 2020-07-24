@@ -106,4 +106,8 @@ export class RecipeEditComponent implements OnInit {
       })
     );
   }
+
+  onDeleteIngredient(index: number) {
+    this.controls.splice(index, 1);
+  }
 }
