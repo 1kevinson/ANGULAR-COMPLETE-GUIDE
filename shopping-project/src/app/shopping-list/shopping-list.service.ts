@@ -22,12 +22,6 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
-  onIngredientAdded(ingName: string, ingAmount: number) {
-    const newIng = new Ingredient(ingName, ingAmount);
-    this.ingredients.push(newIng);
-    this.IngredientCreated.next(this.ingredients.slice());
-  }
-
   onIngredientsAdded(ingredientsAdded: Ingredient[]) {
     this.ingredients.push(...ingredientsAdded);
     this.IngredientCreated.next(this.ingredients.slice());
@@ -35,6 +29,11 @@ export class ShoppingListService {
 
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
+    this.IngredientCreated.next(this.ingredients.slice());
+  }
+
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
     this.IngredientCreated.next(this.ingredients.slice());
   }
 }
