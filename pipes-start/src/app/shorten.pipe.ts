@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from "@angular/core";
   name: "shorten",
 })
 export class ShortenPipe implements PipeTransform {
-  transform(value: any): any {
-    return value.length > 10 ? value.substr(0, 10) + " ..." : value;
+  transform(value: any, limit: number) {
+    return value.length > limit ? value.substr(0, limit) + " ..." : value;
   }
 }
