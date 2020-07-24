@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 export class ShoppingListService {
   // Add observale Subject
   IngredientCreated = new Subject<Ingredient[]>();
+  // Subject created to trigger every item that will be selected
   startEditing = new Subject<number>();
 
   // Define array of ingredients
@@ -15,6 +16,10 @@ export class ShoppingListService {
 
   getIngredients() {
     return this.ingredients.slice();
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 
   onIngredientAdded(ingName: string, ingAmount: number) {

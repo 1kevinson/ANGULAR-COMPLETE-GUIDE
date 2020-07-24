@@ -13,6 +13,7 @@
             #name="ngModel"
             required
           />
+          <!-- Local reference #name is use to check validation -->
           <span class="help-block" *ngIf="!name.valid && name.touched">
             Please enter a valid amount</span
           >

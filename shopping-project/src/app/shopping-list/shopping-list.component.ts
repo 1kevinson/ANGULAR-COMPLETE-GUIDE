@@ -28,7 +28,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   onEditItem(index: number) {
-    // Emmit the new value that will be reachable by others components
+    // Dispatch the index of ingredient that will be triggered
     this.shoppingListService.startEditing.next(index);
   }
 }
