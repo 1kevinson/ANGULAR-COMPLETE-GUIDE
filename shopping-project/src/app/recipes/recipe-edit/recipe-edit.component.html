@@ -39,13 +39,25 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
+              #imagePath
             />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive" />
+          <img
+            *ngIf="imagePath.value"
+            [src]="imagePath.value"
+            class="img-responsive"
+            alt="image preview"
+            style="
+              height: 25rem;
+              width: 30rem;
+              border: #cccccc solid 2px;
+              padding: 1rem;
+            "
+          />
         </div>
       </div>
       <div class="row">

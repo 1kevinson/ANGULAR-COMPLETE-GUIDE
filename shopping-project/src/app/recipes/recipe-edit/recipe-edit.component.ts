@@ -87,6 +87,7 @@ export class RecipeEditComponent implements OnInit {
       this.router.navigate(['../../', this.id], { relativeTo: this.route });
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
+      this.router.navigate(['../'], { relativeTo: this.route });
     }
   }
 
