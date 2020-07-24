@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
 export class AppComponent {
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve("stable");
+      resolve(this.status[Math.floor(Math.random() * Math.floor(4))]);
     }, 2000);
   });
 
@@ -41,6 +41,13 @@ export class AppComponent {
 
   filteredStatus: any = "";
   status = ["stable", "critical", "offline", "online"];
+  names = [
+    "Production",
+    "User Database",
+    "Admin Database",
+    "Testing Environment Server",
+    "Development Server",
+  ];
 
   getStatusClasses(server: {
     instanceType: string;
@@ -59,7 +66,7 @@ export class AppComponent {
   onAddServer() {
     this.servers.push({
       instanceType: "small",
-      name: "new Sever",
+      name: this.names[Math.floor(Math.random() * Math.floor(5))],
       status: this.status[Math.floor(Math.random() * Math.floor(4))],
       started: new Date(15, 1, 2017),
     });

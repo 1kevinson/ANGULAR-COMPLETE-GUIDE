@@ -8,7 +8,6 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class FilterPipe implements PipeTransform {
   transform(value: any, propName: string, filterString: string): any {
     if (value.length === 0 || filterString === "") {
-      console.log("dddd");
       return value;
     }
 
