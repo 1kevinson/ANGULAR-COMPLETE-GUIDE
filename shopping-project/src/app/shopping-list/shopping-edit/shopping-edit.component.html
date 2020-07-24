@@ -43,7 +43,10 @@
             {{ editedMode ? "Update" : "Add" }}
           </button>
           &nbsp;
-          <button class="btn btn-danger" type="button">Delete</button> &nbsp;
+          <button class="btn btn-danger" type="button" (click)="onDelete()">
+            Delete
+          </button>
+          &nbsp;
           <button class="btn btn-default" type="button" (click)="onReset()">
             Clear
           </button>
