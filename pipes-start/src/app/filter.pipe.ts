@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 @Pipe({
   name: "filter",
 })
+// Good to use on research
 export class FilterPipe implements PipeTransform {
   transform(value: any, propName: string, filterString: string): any {
     const filteredArray = [];
