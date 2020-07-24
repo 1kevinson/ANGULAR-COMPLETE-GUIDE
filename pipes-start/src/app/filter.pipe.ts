@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: "filter",
+  pure: false,
 })
 // Good to use on research
 export class FilterPipe implements PipeTransform {
@@ -15,7 +16,6 @@ export class FilterPipe implements PipeTransform {
     for (const item of value) {
       if (item[propName] === filterString) {
         filteredArray.push(item);
-        console.log(item);
       }
     }
     return filteredArray;

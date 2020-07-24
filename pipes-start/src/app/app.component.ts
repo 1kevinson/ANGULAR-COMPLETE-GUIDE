@@ -16,7 +16,7 @@ export class AppComponent {
     {
       instanceType: "large",
       name: "User Database",
-      status: "stable",
+      status: "online",
       started: new Date(15, 1, 2017),
     },
     {
@@ -34,6 +34,7 @@ export class AppComponent {
   ];
 
   filteredStatus: any = "";
+  status = ["stable", "critical", "offline", "online"];
 
   getStatusClasses(server: {
     instanceType: string;
@@ -43,8 +44,18 @@ export class AppComponent {
   }) {
     return {
       "list-group-item-success": server.status === "stable",
+      "list-group-item-info": server.status === "online",
       "list-group-item-warning": server.status === "offline",
       "list-group-item-danger": server.status === "critical",
     };
+  }
+
+  onAddServer() {
+    this.servers.push({
+      instanceType: "small",
+      name: "new Sever",
+      status: this.status[Math.floor(Math.random() * Math.floor(4))],
+      started: new Date(15, 1, 2017),
+    });
   }
 }
