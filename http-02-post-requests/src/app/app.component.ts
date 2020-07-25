@@ -11,7 +11,8 @@ import { PostsService } from "./posts.service";
 })
 export class AppComponent implements OnInit {
   loadedPosts = [];
-  isFetching = false;
+  isFetching: boolean = false;
+  allDeleted: boolean = false;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
 
   onCreatePost(postData: Post) {
     // Send Http request
+    this.allDeleted = false;
     this.postsService.createAndStorePost(postData.title, postData.content);
   }
 
@@ -35,6 +37,10 @@ export class AppComponent implements OnInit {
 
   onClearPosts() {
     // Send Http request
+    this.postsService.clearPosts().subscribe(() => {
+      this.loadedPosts = [];
+      this.allDeleted = true;
+    });
   }
 
   fetchPosts() {}

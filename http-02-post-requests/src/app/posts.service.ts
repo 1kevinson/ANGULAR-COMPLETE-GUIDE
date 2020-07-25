@@ -40,4 +40,10 @@ export class PostsService {
         })
       );
   }
+
+  clearPosts() {
+    return this.http.delete(
+      "https://ng-complete-guide-59510.firebaseio.com/posts.json"
+    );
+  }
 }

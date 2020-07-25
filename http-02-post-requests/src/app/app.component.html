@@ -59,6 +59,9 @@
         </li>
       </ul>
       <p *ngIf="isFetching">Loading...</p>
+      <div class="alert alert-danger" role="alert" *ngIf="allDeleted">
+        All Posts have been deleted
+      </div>
     </div>
   </div>
 </div>
