@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Post } from "./post.model";
 import { catchError, map } from "rxjs/operators";
 import { Subject, throwError } from "rxjs";
@@ -30,7 +30,10 @@ export class PostsService {
     // Pipe is use to transform the data with observable before it's handle
     return this.http
       .get<{ [key: string]: Post }>(
-        "https://ng-complete-guide-59510.firebaseio.com/posts.json"
+        "https://ng-complete-guide-59510.firebaseio.com/posts.json",
+        {
+          headers: new HttpHeaders({ "Custom-Header": "Hello" }),
+        }
       )
       .pipe(
         map((responseData) => {
