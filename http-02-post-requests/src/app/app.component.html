@@ -58,9 +58,13 @@
           <p>{{ post.content }}</p>
         </li>
       </ul>
-      <p *ngIf="isFetching">Loading...</p>
-      <div class="alert alert-danger" role="alert" *ngIf="allDeleted">
+      <p *ngIf="isFetching && !error">Loading...</p>
+      <div class="alert alert-warning" role="alert" *ngIf="allDeleted">
         All Posts have been deleted
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="error">
+        <h3>An Error Occured!</h3>
+        <p>{{ error }}</p>
       </div>
     </div>
   </div>

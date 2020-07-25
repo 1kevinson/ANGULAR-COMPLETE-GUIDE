@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Post } from "./post.model";
 import { PostsService } from "./posts.service";
+import { error } from "util";
 
 @Component({
   selector: "app-root",
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
   loadedPosts = [];
   isFetching: boolean = false;
   allDeleted: boolean = false;
+  error = null;
 
   constructor(private http: HttpClient, private postsService: PostsService) {}
 
@@ -29,10 +31,16 @@ export class AppComponent implements OnInit {
   onFetchPosts() {
     //No subscription = no request send
     this.isFetching = true;
-    this.postsService.fetchPosts().subscribe((posts) => {
-      this.isFetching = false;
-      this.loadedPosts = posts;
-    });
+    this.postsService.fetchPosts().subscribe(
+      (posts) => {
+        this.isFetching = false;
+        this.loadedPosts = posts;
+      },
+      (error) => {
+        console.log(error);
+        this.error = error.message;
+      }
+    );
   }
 
   onClearPosts() {
