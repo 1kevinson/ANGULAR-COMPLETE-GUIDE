@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   fetchPosts() {
-    // Pipe is use to manage the observable data before it's use
+    // Pipe is use to transform the data with observable before it's handle
     this.http
       .get<{ [key: string]: Post }>(
         "https://ng-complete-guide-59510.firebaseio.com/posts.json"
@@ -59,6 +59,7 @@ export class AppComponent implements OnInit {
       )
       .subscribe((posts) => {
         console.log(posts);
+        this.loadedPosts = posts;
       });
   }
 }
