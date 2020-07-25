@@ -35,16 +35,15 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onFetchPosts() {
-    //No subscription = no request send
+    //If we don't subscribe, no request will be sent
     this.isFetching = true;
     this.postsService.fetchPosts().subscribe(
       (posts) => {
         this.isFetching = false;
         this.loadedPosts = posts;
       },
-      (error) => {
-        console.log(error);
-        this.error = error.message;
+      (errorResponse) => {
+        this.postsService.errorHandler.next(errorResponse.error["error"]);
       }
     );
   }
