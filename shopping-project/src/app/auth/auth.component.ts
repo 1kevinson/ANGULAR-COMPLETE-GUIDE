@@ -35,10 +35,10 @@ export class AuthComponent {
           console.table(response);
           this.isLoading = false;
         },
-        (error) => {
-          console.log(error);
+        (errorResponse) => {
+          console.log(errorResponse);
+          this.error = errorResponse;
           this.isLoading = false;
-          this.error = 'An error occured !';
         }
       );
     }
