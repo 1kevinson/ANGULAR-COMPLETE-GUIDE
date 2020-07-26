@@ -21,6 +21,7 @@ export class AuthComponent {
   onSubmit(authForm: NgForm) {
     const email = authForm.value.email;
     const paswword = authForm.value.password;
+    let authObs;
 
     // Hack for user using the console to deactivate JS
     if (!authForm.valid) {
@@ -29,34 +30,29 @@ export class AuthComponent {
 
     this.isLoading = true;
     if (this.isLoginMode) {
-      this.authService.login(email, paswword).subscribe(
-        (response) => {
-          console.log(response);
-          this.isLoading = false;
-          this.error = null;
-        },
-        (errorResp) => {
-          console.log(errorResp);
-          this.error = errorResp;
-          this.isLoading = false;
-        }
-      );
+      authObs = this.authService.login(email, paswword);
     } else {
-      this.authService.signUp(email, paswword).subscribe(
-        (response) => {
-          console.table(response);
-          this.signUpText = response
-            ? 'Hoorah, you have been registered'
-            : 'Unknow...';
-          this.isLoading = false;
-        },
-        (errorResponse) => {
-          console.log(errorResponse);
-          this.error = errorResponse;
-          this.isLoading = false;
-        }
-      );
+      authObs = this.authService.signUp(email, paswword);
     }
+
+    authObs.subscribe(
+      (response) => {
+        console.log(response);
+        !this.isLoginMode
+          ? (this.signUpText = response
+              ? 'Welcome, you have been registered!'
+              : 'Unknow...')
+          : null;
+
+        this.isLoading = false;
+        this.error = null;
+      },
+      (errorResp) => {
+        console.log(errorResp);
+        this.error = errorResp;
+        this.isLoading = false;
+      }
+    );
 
     authForm.reset();
   }
