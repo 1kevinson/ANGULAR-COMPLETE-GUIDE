@@ -21,7 +21,7 @@ export class AuthService {
 
   signUp(email: string, password: string) {
     return this.http
-      .post<AuthResponseData>(
+      .post(
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=\n' +
           'AIzaSyB-TYsYdYHeyTwPgrtGPHvrb-x-hoajzJg',
         {
@@ -32,8 +32,24 @@ export class AuthService {
       )
       .pipe(
         // Better to handle errors messages in service
+        catchError(this.handleError)
+      );
+  }
+
+  login(email: string, password: string) {
+    return this.http
+      .post<AuthResponseData>(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\n' +
+          'AIzaSyB-TYsYdYHeyTwPgrtGPHvrb-x-hoajzJg',
+        {
+          email: email,
+          password: password,
+          returnSecureToken: true,
+        }
+      )
+      .pipe(
         catchError(this.handleError),
-        // tap allow to perform some action without chaging the response (block it,stop it or change it)
+        // tap allow to perform some action without changing the response (block it,stop it or change it)
         tap((responseData) => {
           this.handleAuthentication(
             responseData.email,
@@ -45,20 +61,6 @@ export class AuthService {
       );
   }
 
-  login(email: string, password: string) {
-    return this.http
-      .post(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\n' +
-          'AIzaSyB-TYsYdYHeyTwPgrtGPHvrb-x-hoajzJg',
-        {
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }
-      )
-      .pipe(catchError(this.handleError));
-  }
-
   private handleAuthentication(
     email: string,
     userId: string,
@@ -67,6 +69,8 @@ export class AuthService {
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+
+    // ONCE LOGGED IN DISPATCH THE USER DATA THEN WE CAN CHECK IF IT'S LOGGED OR NOT
     this.user.next(user);
   }
 
