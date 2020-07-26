@@ -10,6 +10,7 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   isLoading: boolean = false;
   error: string = null;
+  signUpText: string = null;
 
   constructor(private authService: AuthService) {}
 
@@ -28,11 +29,25 @@ export class AuthComponent {
 
     this.isLoading = true;
     if (this.isLoginMode) {
-      console.log('login mode!');
+      this.authService.login(email, paswword).subscribe(
+        (response) => {
+          console.log(response);
+          this.isLoading = false;
+          this.error = null;
+        },
+        (errorResp) => {
+          console.log(errorResp);
+          this.error = errorResp;
+          this.isLoading = false;
+        }
+      );
     } else {
       this.authService.signUp(email, paswword).subscribe(
         (response) => {
           console.table(response);
+          this.signUpText = response
+            ? 'Hoorah, you have been registered'
+            : 'Unknow...';
           this.isLoading = false;
         },
         (errorResponse) => {

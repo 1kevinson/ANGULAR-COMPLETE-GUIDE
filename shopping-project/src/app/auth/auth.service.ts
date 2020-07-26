@@ -44,4 +44,39 @@ export class AuthService {
         })
       );
   }
+
+  login(email: string, password: string) {
+    return this.http
+      .post(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=\n' +
+          'AIzaSyB-TYsYdYHeyTwPgrtGPHvrb-x-hoajzJg',
+        {
+          email: email,
+          password: password,
+          returnSecureToken: true,
+        }
+      )
+      .pipe(
+        catchError((errorRes) => {
+          let errorMsg = 'An Unknown error occured!';
+
+          if (!errorRes.error || !errorRes.error.error) {
+            return throwError(errorMsg);
+          }
+
+          switch (errorRes.error.error.message) {
+            case 'EMAIL_NOT_FOUND':
+              errorMsg = 'This email / user is not found';
+              break;
+            case 'INVALID_PASSWORD':
+              errorMsg = 'Your password is invalid';
+              break;
+            case 'USER_DISABLED':
+              errorMsg = 'User have been disabled by Admin';
+              break;
+          }
+          return throwError(errorMsg);
+        })
+      );
+  }
 }

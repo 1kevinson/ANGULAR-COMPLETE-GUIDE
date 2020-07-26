@@ -3,6 +3,9 @@
     <div class="alert alert-danger" *ngIf="error">
       <p>{{ error }}</p>
     </div>
+    <div class="alert alert-success" *ngIf="signUpText">
+      <p>{{ signUpText }}</p>
+    </div>
     <div *ngIf="isLoading" style="text-align: center;">
       <app-loading-spinner></app-loading-spinner>
     </div>
