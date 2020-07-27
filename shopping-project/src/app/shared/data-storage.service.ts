@@ -25,29 +25,23 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    return this.authService.user.pipe(
-      // take is a function that allow us to take data once (on demand) and don't need to manually unscubscribe
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>( // <> use to inform about the type of the response, because 'get' is a generic type
-          'https://ng-course-recipe-book-3ae65.firebaseio.com/recipe.json',
-          {
-            params: new HttpParams().set('auth', user.token),
-          }
-        );
-      }),
-      map((recipes) => {
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap((recipes) => {
-        // write code without altered data retrieved by http request : IMPORTANT TO DO THIS BEFORE SUBSCRIBE IN COMPONENT.TS
-        this.recipeService.setRecipes(recipes);
-      })
-    );
+    return this.http
+      .get<Recipe[]>( // <> use to inform about the type of the response, because 'get' is a generic type
+        'https://ng-course-recipe-book-3ae65.firebaseio.com/recipe.json'
+      )
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap((recipes) => {
+          // write code without altered data retrieved by http request : IMPORTANT TO DO THIS BEFORE SUBSCRIBE IN COMPONENT.TS
+          this.recipeService.setRecipes(recipes);
+        })
+      );
   }
 }
