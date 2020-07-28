@@ -19,6 +19,7 @@ export class AuthService {
   // BehaviorSubject give access to the previously emited value even if they haven't subscribed at the point
   // of time that value was emitted , useful to get THE CURRENTLY ACTIVE USER
   user = new BehaviorSubject<User>(null);
+  private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -59,7 +60,20 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
+
+      // Call the logout after the user logged in
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+      this.autoLogout(expirationDuration);
     }
+  }
+
+  autoLogout(expirationDuration: number) {
+    // Create a timeOut to autoLogout
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   login(email: string, password: string) {
@@ -90,6 +104,13 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
+    localStorage.removeItem('userData');
+
+    // Clear autoLogout Timer
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
   }
 
   private handleAuthentication(
@@ -100,6 +121,7 @@ export class AuthService {
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const user = new User(email, userId, token, expirationDate);
+    this.autoLogout(expiresIn * 1000);
 
     // ONCE LOGGED IN DISPATCH THE USER DATA THEN WE CAN CHECK IF IT'S LOGGED OR NOT
     this.user.next(user);
