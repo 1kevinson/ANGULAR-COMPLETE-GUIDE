@@ -12,6 +12,7 @@ import { RecipeModule } from './recipes/recipe.module';
 import { RecipeRoutingModule } from './recipes/recipe-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     RecipeRoutingModule,
     ShoppingListModule,
     AuthModule,
+    SharedModule,
   ], //Don't forget to import the reactive form module
   providers: [
     ShoppingListService,
