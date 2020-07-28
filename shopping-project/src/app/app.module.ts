@@ -15,6 +15,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import { AuthInterceptorService } from './auth/auth-interceptorService';
 import { AlertComponent } from './shared/alert/alert.component';
 import { RecipeModule } from './recipes/recipe.module';
+import { RecipeRoutingModule } from './recipes/recipe-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RecipeModule } from './recipes/recipe.module';
     ReactiveFormsModule,
     HttpClientModule,
     RecipeModule,
+    RecipeRoutingModule,
   ], //Don't forget to import the reactive form module
   providers: [
     ShoppingListService,
