@@ -5,6 +5,8 @@ export class User {
     private _token: string,
     private _tokenExpirationDate: Date
   ) {}
+
+  //Retrieve the user token to check online status
   get token() {
     if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
       return null;
