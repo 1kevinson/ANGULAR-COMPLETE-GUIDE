@@ -15,13 +15,13 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { RecipeModule } from './recipes/recipe.module';
 import { RecipeRoutingModule } from './recipes/recipe-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DropdownDirective,
-    AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
   ],
@@ -34,6 +34,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     RecipeModule,
     RecipeRoutingModule,
     ShoppingListModule,
+    AuthModule,
   ], //Don't forget to import the reactive form module
   providers: [
     ShoppingListService,
