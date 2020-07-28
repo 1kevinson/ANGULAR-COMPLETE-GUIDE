@@ -8,6 +8,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeRoutingModule } from './recipe-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +19,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeStartComponent,
     RecipeEditComponent,
   ],
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
-  exports: [
-    // Exports all Modules, so we can import recipe.module.ts in app.module.ts
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    RecipeStartComponent,
-    RecipeEditComponent,
+  imports: [
+    RouterModule,
+    CommonModule,
+    ReactiveFormsModule,
+    RecipeRoutingModule,
   ],
+  //No need to export anymore because recipes component navigate internally
 })
 export class RecipeModule {}
